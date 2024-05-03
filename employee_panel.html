@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #333;
+        }
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #333;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        .container.dark-mode {
+            background-color: #444;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.757);
+        }
+        h2.dark-mode, label.dark-mode {
+            color: #fff;
+        }
+        input[type="text"].dark-mode, select.dark-mode {
+            background-color: #555;
+            color: #fff;
+            border: 1px solid #666;
+        }
+        input[type="submit"].dark-mode:hover {
+            background-color: #45a049;
+        }
+        .btn-mode {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <button class="btn-mode" onclick="toggleMode()">Toggle Mode</button>
+    <div class="container">
+        <h2>Employee Panel</h2>
+        <form id="employeeForm" action="generate_receipt.html" method="get">
+            <div class="form-group">
+                <label for="employee_name">Employee Name:</label>
+                <input type="text" id="employee_name" name="employee_name" required>
+            </div>
+            <div class="form-group">
+                <label for="employee_id">Employee ID:</label>
+                <input type="text" id="employee_id" name="employee_id" required>
+            </div>
+            <div class="form-group">
+                <label for="customer_name">Customer Name:</label>
+                <input type="text" id="customer_name" name="customer_name" required>
+            </div>
+            <div class="form-group">
+                <label for="order_number">Order Number:</label>
+                <input type="text" id="order_number" name="order_number" required>
+            </div>
+            <div class="form-group">
+                <label for="product">Product:</label>
+                <input type="text" id="product" name="product" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="payment_method">Payment Method:</label>
+                <select id="payment_method" name="payment_method" required>
+                    <option value="CashApp">CashApp</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Robux">Robux</option>
+                </select>
+            </div>
+            <input type="submit" value="Generate Receipt">
+        </form>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const containers = document.querySelectorAll('.container');
+            const btnMode = document.querySelector('.btn-mode');
+            
+            body.classList.toggle('dark-mode');
+            containers.forEach(container => container.classList.toggle('dark-mode'));
+            btnMode.textContent = body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+        }
+    </script>
+</body>
+</html>
